@@ -15,7 +15,7 @@ namespace NpfRatexTest3.Models
 
         public NpfRatexTest3Context(string connectionString)
         {
-            this.connectionString = (connectionString is null) == false ? connectionString : "TestData.db";
+            this.connectionString = (connectionString is null) == false ? connectionString : "Data Source=TestData.db";
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

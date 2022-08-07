@@ -19,6 +19,12 @@
             </UniformGrid>
             <ProgressBar DockPanel.Dock="Bottom" Margin="10"></ProgressBar>
         </DockPanel>
-        <DataGrid></DataGrid>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№"/>
+                <DataGridTextColumn Header="Флаг"/>
+                <DataGridTextColumn Header="Дата и время"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Window>

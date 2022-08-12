@@ -11,7 +11,7 @@ namespace NpfRatexTest3.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = MainWindowViewModel();
+            DataContext = new MainWindowViewModel();
         }
     }
 }

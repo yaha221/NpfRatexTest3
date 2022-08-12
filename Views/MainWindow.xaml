@@ -4,28 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:NpfRatexTest3"
+        xmlns:VM="clr-namespace:NpfRatexTest3.ViewModels" d:DataContext="{d:DesignInstance Type=VM:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="5,5,5,0">
             <UniformGrid DockPanel.Dock="Right" Rows="1" HorizontalAlignment="Right">
                 <ComboBox Margin="5" Padding="70,2"></ComboBox>
             </UniformGrid>
-            <TextBlock FontSize="16" DockPanel.Dock="Left" Margin="5">Data Source = </TextBlock>
-            <TextBox DockPanel.Dock="Top" Margin="5" />
+            <TextBlock FontSize="13" DockPanel.Dock="Left" Margin="5" Text="Строка подключения:"></TextBlock>
+            <TextBox DockPanel.Dock="Top" Margin="5" Text="{Binding NewConnectionString}" 
+                     ToolTip=""/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Margin="5,5,5,0">
             <UniformGrid DockPanel.Dock="Left" HorizontalAlignment="Left" Rows="1">
-                <Button Content="Старт" Margin="5" Padding="20,5"></Button>
-                <Button Content="Стоп" Margin="5" Padding="20,5"></Button>
+                <Button Content="Старт" Margin="5" Padding="20,5" Command="{Binding OpenConnectionThreadCommand}"></Button>
+                <Button Content="Стоп" Margin="5" Padding="20,5" Command="{Binding CloseConnectionThreadCommand}"></Button>
             </UniformGrid>
             <ProgressBar DockPanel.Dock="Bottom" Margin="10"></ProgressBar>
         </DockPanel>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="№"/>
-                <DataGridTextColumn Header="Флаг"/>
-                <DataGridTextColumn Header="Дата и время"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid ItemsSource ="{Binding TestDataGrid, UpdateSourceTrigger = PropertyChanged,Mode=OneWay}"></DataGrid>
     </DockPanel>
 </Window>

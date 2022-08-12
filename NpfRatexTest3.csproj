@@ -8,7 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\BaseClasses\**" />
+    <EmbeddedResource Remove="Models\BaseClasses\**" />
+    <None Remove="Models\BaseClasses\**" />
+    <Page Remove="Models\BaseClasses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\MssqlPlatformBase.cs" />
+    <Compile Remove="Models\SqlDependencyEx.cs" />
+    <Compile Remove="Models\SqlitePlatformBase.cs" />
+    <Compile Remove="ViewModels\TrulyObservableCollection.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
   </ItemGroup>
 
 </Project>

@@ -1,35 +1,49 @@
 ﻿using System;
-using NpfRatexTest3.ViewModels;
 
 namespace NpfRatexTest3.Models
 {
-    public class TestData:ViewModel
+    public class TestData : IEquatable<TestData>
     {
         public int Id { get; set; }
 
         #region Поле флага
 
         private bool _flag;
-        /// <summary> Поле флага</summary>
+        
         public bool Flag
         {
             get => _flag;
-            set => Set(ref _flag, value);
+            set => _flag = value;
         }
 
         #endregion
 
         #region Поле даты
 
-        private string _date;
-        /// <summary> Поле даты </summary>
-        public string Date
+        private string _dateNow;
+        
+        public string DateNow
         {
-            get => _date;
-            set => Set(ref _date, value);
+            get => _dateNow;
+            set => _dateNow = value;
         }
 
         #endregion
 
+        #region Сравнение объектов
+
+        public bool Equals(TestData other)
+        {
+            if (other is null)
+                return false;
+            return this.Id == other.Id && this.Flag == other.Flag && this.DateNow == other.DateNow;
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TestData);
+
+        public override int GetHashCode() => Id.GetHashCode()^Flag.GetHashCode()^DateNow.GetHashCode();
+
+        #endregion
     }
 }
+
